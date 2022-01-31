@@ -1,5 +1,23 @@
-@media (min-width: 1200px) {
-    .container{
-        max-width: 970px;
-    }
+.col 
+{
+    background-color: white; 
+    width: 10px;
+    border: 1px solid black;
+    
+}
+
+#fila 
+{
+    height: 10%;
+}
+
+#grid
+{
+    height: 500px;
+
+}
+
+.coloreado 
+{
+    background-color: green; 
 }
