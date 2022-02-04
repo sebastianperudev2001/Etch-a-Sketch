@@ -1,3 +1,13 @@
+var slider = document.getElementById("myRange");
+var output = document.getElementById("demo");
+
+// Update the current slider value (each time you drag the slider handle)
+slider.oninput = function() {
+  slider.value = this.value;
+}
+
+
+
 //El color de pincel toma por defecto el valor inicial por defecto puesto (o sea rojo)
 let colorPincel = document.getElementById("color-input").value;
 
