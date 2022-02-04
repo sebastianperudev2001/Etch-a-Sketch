@@ -1,6 +1,6 @@
 .col 
 {
-    background-color: white; 
+    background-color: #ffffff; 
     width: 10px;
     border: 1px solid black;
     
@@ -13,6 +13,7 @@
 
 #grid
 {
+    width: 960px;
     height: 500px;
 
 }
