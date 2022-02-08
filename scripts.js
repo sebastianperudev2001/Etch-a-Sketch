@@ -1,12 +1,16 @@
 var slider = document.getElementById("myRange");
 var output = document.getElementById("demo");
 
+
+
 // Update the current slider value (each time you drag the slider handle)
 slider.oninput = function() {
   slider.value = this.value;
 }
 
-
+//Variable globals para seleccionar el tamaño del grid
+let x = 20;
+let y = 20; 
 
 //El color de pincel toma por defecto el valor inicial por defecto puesto (o sea rojo)
 let colorPincel = document.getElementById("color-input").value;
@@ -21,17 +25,26 @@ const updateFirst = (event) =>
 const createGrid = () => 
 {
     const contenedor = document.getElementById("grid");
-    for (let i = 1; i <= 10; i++) 
+    
+    let metricaComun = 960/x; 
+    console.log(metricaComun);
+    for (let i = 1; i <= x; i++) 
     {
         let fila = document.createElement("div");
         fila.setAttribute("id","fila");
-        fila.setAttribute("class", "row");
-        for (let j = 1; j <= 10; j++) 
+        //fila.setAttribute("class", "row");
+        fila.style.height = `${metricaComun}px`;
+        //fila.setAttribute("height", `${altura}%`);
+
+        for (let j = 1; j <= y; j++) 
         {
             let cuadrado = document.createElement("div");
             cuadrado.innerText= " ";
-            cuadrado.setAttribute("class", "col");
+            cuadrado.setAttribute("class", "columna");
             cuadrado.setAttribute("id", `${i},${j}`)
+            cuadrado.style.width = `${metricaComun}px`; 
+            //cuadrado.setAttribute("width", `${ancho}%`)
+            
             fila.appendChild(cuadrado)
         }  
         contenedor.appendChild(fila)
@@ -47,9 +60,9 @@ const hoverEffect = (event) =>
 
 const colorButton = () => 
 {
-    for (let i = 1; i <= 10; i++) 
+    for (let i = 1; i <= x; i++) 
     {
-        for (let j = 1; j <= 10; j++) 
+        for (let j = 1; j <= y; j++) 
         {
             document.getElementById(`${i},${j}`).removeEventListener("mouseenter", rainbowEffect);
             document.getElementById(`${i},${j}`).removeEventListener("mouseenter", eraserEffect);
@@ -62,9 +75,9 @@ const colorButton = () =>
 //Permite borrar todo el grid mediante un inner loop a todos los cuadrillos
 const clearEffect = () => 
 {    
-    for (let i = 1; i <= 10; i++) 
+    for (let i = 1; i <= x; i++) 
     {
-        for (let j = 1; j <= 10; j++) 
+        for (let j = 1; j <= y; j++) 
         {
             document.getElementById(`${i},${j}`).style.backgroundColor = "white";
         }
@@ -94,9 +107,9 @@ const rainbowEffect = (event) =>
 const rainbowButton = () => 
 {
     
-    for (let i = 1; i <= 10; i++) 
+    for (let i = 1; i <= x; i++) 
     {
-        for (let j = 1; j <= 10; j++) 
+        for (let j = 1; j <= y; j++) 
         {
             document.getElementById(`${i},${j}`).removeEventListener("mouseenter", hoverEffect);
             document.getElementById(`${i},${j}`).removeEventListener("mouseenter", eraserEffect);
@@ -114,9 +127,9 @@ const eraserEffect = (event) =>
 
 const eraserButton = () => 
 {
-    for (let i = 1; i <= 10; i++) 
+    for (let i = 1; i <= x; i++) 
     {
-        for (let j = 1; j <= 10; j++) 
+        for (let j = 1; j <= y; j++) 
         {
             document.getElementById(`${i},${j}`).removeEventListener("mouseenter", rainbowEffect);
             document.getElementById(`${i},${j}`).removeEventListener("mouseenter", hoverEffect);
@@ -135,9 +148,9 @@ const main = () =>
     document.getElementById("but-colorMode").addEventListener("click", colorButton);
     document.getElementById("but-eraser").addEventListener("click", eraserButton); 
     //A cada cuadrito se le otorga el evento hover 
-    for (let i = 1; i <= 10; i++) 
+    for (let i = 1; i <= x; i++) 
     {
-        for (let j = 1; j <= 10; j++) 
+        for (let j = 1; j <= y; j++) 
         {
             document.getElementById(`${i},${j}`).addEventListener("mouseenter", hoverEffect);
         }

@@ -1,21 +1,27 @@
-.col 
+.columna 
 {
     background-color: #ffffff; 
-    width: 10px;
-    border: 1px solid black;
-    
+    /*width: 10%;
+       
+    */
+    outline: 1px solid black;
+    margin-top: 1px;
+    margin-left: 1px;
+
+
 }
 
 #fila 
 {
-    height: 10%;
+    /*height: 10%;*/
+    display:flex;
 }
 
 #grid
 {
     
-    width: 500px;
-    height: 500px;
+    width: 960px;
+    height: 960px;
 
 }
 
@@ -23,6 +29,7 @@
 {
     background-color: green; 
 }
+
 
 .slidecontainer {
     width: 100%; /* Width of the outside container */
