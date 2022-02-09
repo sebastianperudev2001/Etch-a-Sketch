@@ -1,16 +1,34 @@
 var slider = document.getElementById("myRange");
 var output = document.getElementById("demo");
 
-
-
-// Update the current slider value (each time you drag the slider handle)
-slider.oninput = function() {
-  slider.value = this.value;
-}
-
 //Variable globals para seleccionar el tamaño del grid
 let x = 20;
 let y = 20; 
+
+// Update the current slider value (each time you drag the slider handle)
+slider.onchange = function() {
+    console.log(slider.value);
+    slider.value = this.value;
+    x = slider.value; 
+    y = slider.value;
+    document.getElementById("grid").remove();
+    
+    const container = document.createElement("div");
+    container.setAttribute("class","container mt-5 mb-5 p-0");
+    container.setAttribute("id","grid");
+
+    const botones = document.getElementById("botones")
+    document.getElementById("body").insertBefore(container,botones);
+    createGrid();
+    colorButton();
+  }
+
+slider.oninput = function() 
+{
+    slider.value = this.value; 
+    document.getElementById("numero").innerText =`${slider.value}x${slider.value}`;   ; 
+}
+  
 
 //El color de pincel toma por defecto el valor inicial por defecto puesto (o sea rojo)
 let colorPincel = document.getElementById("color-input").value;
@@ -27,7 +45,6 @@ const createGrid = () =>
     const contenedor = document.getElementById("grid");
     
     let metricaComun = 960/x; 
-    console.log(metricaComun);
     for (let i = 1; i <= x; i++) 
     {
         let fila = document.createElement("div");
@@ -142,22 +159,24 @@ const eraserButton = () =>
 const main = () => 
 {
     createGrid(); 
-    document.getElementById("but-clear").addEventListener("click", clearEffect);
-    document.getElementById("color-input").addEventListener("input", updateFirst, false); 
-    document.getElementById("but-rainbowMode").addEventListener("click", rainbowButton);
-    document.getElementById("but-colorMode").addEventListener("click", colorButton);
-    document.getElementById("but-eraser").addEventListener("click", eraserButton); 
     //A cada cuadrito se le otorga el evento hover 
     for (let i = 1; i <= x; i++) 
     {
         for (let j = 1; j <= y; j++) 
         {
             document.getElementById(`${i},${j}`).addEventListener("mouseenter", hoverEffect);
-        }
-        
+        }   
     }
 
-   
+
+    document.getElementById("but-clear").addEventListener("click", clearEffect);
+    document.getElementById("color-input").addEventListener("input", updateFirst, false); 
+    document.getElementById("but-rainbowMode").addEventListener("click", rainbowButton);
+    document.getElementById("but-colorMode").addEventListener("click", colorButton);
+    document.getElementById("but-eraser").addEventListener("click", eraserButton); 
+
+
+
     
 }
 

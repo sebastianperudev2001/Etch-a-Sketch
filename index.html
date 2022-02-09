@@ -14,7 +14,7 @@
         crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body id="body">
     <!-- Cabecera -->
     <header>
         <h1 id="titulo" class="display-1 mt-5 mb-5 text-center">Etch a Sketch</h1>
@@ -30,19 +30,21 @@
             Tamaño
             <div class="slidecontainer">
                 <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-              </div>
+            </div>
+            <div class="card w-50" id="numero">
+                
+            </div>
         </div>
 
     </div>
     
 
     <div class="container mt-5 mb-5 p-0" id="grid">
-       
     </div>
 
     <!-- Botones -->
 
-    <div class="container" id="botones">
+    <div class="container mb-3" id="botones">
         <button id = "but-colorMode">Color Mode</button>
         <button id = "but-rainbowMode">Rainbow Mode</button>
         <button id = "but-eraser">Eraser</button>
